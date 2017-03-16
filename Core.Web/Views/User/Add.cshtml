@@ -1,0 +1,19 @@
+﻿@model User
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>添加用户</title>
+</head>
+<body>
+    <form action="Add" method="post">
+        用户名: <input type="text" id="name" asp-for="Name"  />
+       <br />
+        年龄: <input type="text" id="age" asp-for="Age" />
+        <br />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>
