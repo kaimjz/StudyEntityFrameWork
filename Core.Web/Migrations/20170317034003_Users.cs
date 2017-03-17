@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Core.Web.Migrations
 {
-    public partial class Add_Users : Migration
+    public partial class Users : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace Core.Web.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Address = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },

@@ -26,8 +26,7 @@ namespace Core.Web
         // 这个方法被运行时调用。使用此方法将配置添加到容器中。
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = "Filename=./efcoredemo.db";
-            services.AddDbContext<DataContext>(options => options.UseSqlite(connection));
+            services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
             // Add framework services.
             services.AddMvc();
         }

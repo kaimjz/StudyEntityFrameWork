@@ -8,8 +8,8 @@ using Core.Web.App_Data;
 namespace Core.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20170315140854_Add_Users_New")]
-    partial class Add_Users_New
+    [Migration("20170317034003_Users")]
+    partial class Users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
