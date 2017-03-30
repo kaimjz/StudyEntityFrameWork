@@ -1,36 +1,27 @@
-﻿@model List<User>
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>用户首页</title>
-</head>
-<body>
-    <h3>用户列表</h3>
-    <table class="table table-bordered table-hover table-condensed">
-        <tr>
-            <th>Id</th>
-            <th>用户名</th>
-            <th>年龄</th>
-        </tr>
-        @foreach (var item in Model)
+﻿@{
+    ViewData["Title"] = "用户首页";
+}
+@model List<User>
+<h3>用户列表</h3>
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <th>Id</th>
+        <th>用户名</th>
+        <th>年龄</th>
+    </tr>
+    @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(mo => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(mo => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(mo => item.Age)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(mo => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(mo => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(mo => item.Age)
+            </td>
+        </tr>
         }
-        </table><br />
-        <a asp-controller="User" asp-action="Add">添加用户</a>
-</body>
-</html>
+</table><br />
+<a asp-controller="User" asp-action="Add">添加用户</a>
