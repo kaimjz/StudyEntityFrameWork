@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Core.Web.Models
 {
-    public class User
+    public class Users
     {
         public int Id { get; set; }
 

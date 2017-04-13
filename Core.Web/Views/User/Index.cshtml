@@ -1,27 +1,50 @@
 ﻿@{
     ViewData["Title"] = "用户首页";
 }
-@model List<User>
-<h3>用户列表</h3>
-<table class="table table-bordered table-hover table-condensed">
-    <tr>
-        <th>Id</th>
-        <th>用户名</th>
-        <th>年龄</th>
-    </tr>
-    @foreach (var item in Model)
-        {
+@model List<Users>
+<h3><a href="/user/index">用户列表</a><a href="/user/indexAjax"  class="col-lg-offset-1">Ajax用户列表</a></h3>
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-bordered table-hover table-condensed">
         <tr>
-            <td>
-                @Html.DisplayFor(mo => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(mo => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(mo => item.Age)
-            </td>
+            <th>Id</th>
+            <th>用户名</th>
+            <th>年龄</th>
         </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(mo => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(mo => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(mo => item.Age)
+                </td>
+            </tr>
         }
-</table><br />
-<a asp-controller="User" asp-action="Add">添加用户</a>
+    </table>
+    <div class="center-block">
+        @for (int i = 1; i <= ViewBag.ListCount; i++)
+        {
+            if (@i == ViewBag.PageIndex)
+            {
+                <a class="btn btn-danger" href="/user/index/@i" >@i</a>
+            }
+            else
+            {
+                <a class="btn " href="/user/index/@i">@i</a>
+            }
+        }
+    </div>
+    <br />
+}
+else
+{
+    <div class="center-block text-center">
+        <span class="col-xs-12 table-bordered">暂无数据</span>
+    </div>
+}
+<a asp-controller="User" asp-action="Add" class="btn  btn-default">添加用户</a>

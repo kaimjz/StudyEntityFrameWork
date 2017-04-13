@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "用户首页Ajax";
+}
+@model List<Users>
+<h3>
+    <a href="/user/index">用户列表</a>
+    <a href="/user/indexAjax" class="col-lg-offset-1">Ajax用户列表</a>
+</h3>
+<div id="tableDiv" class="hidden">
+    <table class="table table-bordered table-hover table-condensed" id="table">
+        <tr>
+            <th>Id</th>
+            <th>用户名</th>
+            <th>年龄</th>
+        </tr>
+    </table>
+    <div class="center-block" id="pagerDiv">
+        @*<a class="btn  btn-danger" href="/user/index/@i">@i</a>*@
+    </div>
+    <br />
+</div>
+<div class="center-block text-center hidden" id="noData">
+    <span class="col-xs-12 table-bordered">暂无数据</span>
+</div>
+
+<a asp-controller="User" asp-action="Add" class="btn  btn-default">添加用户</a>
+
+@section Scripts{
+    <script>
+        $(function () {
+            GetPageList(1);
+            $("#pagerDiv").on("click", "a", function () {
+                GetPageList($(this).text())
+                $(this).addClass("btn-danger").siblings("a").removeClass("btn-danger");
+            })
+        })
+        function GetPageList(pageIndex) {
+            var pageSize = 1;
+            $.post("/user/getuserlist", { "PageIndex": pageIndex, "PageSize": pageSize, "Pager": $("#pagerDiv").find("a").length }, function (data) {
+                var list = data.list;
+                if (list && list.length) {
+                    $("#table tr:gt(0)").remove();
+                    $("#tableDiv").removeClass("hidden");
+                    $("#noData").addClass("hidden");
+                    for (var i = 0; i < list.length; i++) {
+                        var tr = $("<tr></tr>");
+                        var tId = $("<td></td>").text(list[i].id);
+                        var tName = $("<td></td>").text(list[i].name);
+                        var tAge = $("<td></td>").text(list[i].age);
+                        tr.append(tId, tName, tAge);
+                        $("#table").append(tr);
+                    }
+                    if (data.count != 0) {
+                        for (var i = 1; i <= data.count; i++) {
+                            var a = $("<a></a>").text(i).addClass("btn");
+                            if (i == pageIndex) {
+                                a.addClass("btn-danger");
+                            }
+                            $("#pagerDiv").append(a);
+                        }
+                    }
+                }
+                else {
+                    $("#noData").removeClass("hidden")();
+                    $("#tableDiv").addClass("hidden");
+                }
+            }, "json")
+        }
+    </script>
+}
