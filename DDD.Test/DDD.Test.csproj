@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\EventHandlers\OrderHandler_SendEMail.cs" />
-    <Compile Include="Code\Events\OrderAddedEvent.cs" />
-    <Compile Include="Code\Events\OrderDeletedEvent.cs" />
+    <Compile Include="Code\EventHandlers\SendEmail_EventHandler.cs" />
+    <Compile Include="Code\Events\OrderAdded_Event.cs" />
+    <Compile Include="Code\Events\OrderDeleted_Event.cs" />
     <Compile Include="Code\Infrastructure\ActionDelegatedEventHandler.cs" />
     <Compile Include="Code\Infrastructure\EventBus.cs" />
     <Compile Include="Code\Infrastructure\HandlesAsyncAttribute.cs" />

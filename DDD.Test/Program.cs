@@ -13,14 +13,14 @@ namespace DDD.Test
     {
         static void Main(string[] args)
         {
-            //EventBus.Instance.Subscribe<OrderAddedEvent>(new OrderHandler_SendEMail());
-            //EventBus.Instance.Subscribe<OrderDeletedEvent>(new OrderHandler_SendEMail());
-            var entity1 = new OrderAddedEvent()
+            //EventBus.Instance.Subscribe<OrderAdded_Event>(new SendEmail_EventHandler());
+            //EventBus.Instance.Subscribe<OrderDeleted_Event>(new SendEmail_EventHandler());
+            var entity1 = new OrderAdded_Event()
             {
                 Id = Guid.NewGuid(),
                 Name = "订单1111"
             };
-            var entity2 = new OrderDeletedEvent()
+            var entity2 = new OrderDeleted_Event()
             {
                 Id = Guid.NewGuid(),
                 Name = "订单2222"
