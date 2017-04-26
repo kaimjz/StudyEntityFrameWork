@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Core.Web.App_Data;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Base;
 
 namespace Core.Web
 {
@@ -26,7 +27,7 @@ namespace Core.Web
         // 这个方法被运行时调用。使用此方法将配置添加到容器中。
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
+            //services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("Sqlite")));
             // Add framework services.
             services.AddMvc();
         }
@@ -47,6 +48,7 @@ namespace Core.Web
             {
                 app.UseExceptionHandler("/Shared/Error");
             }
+            app.UseMiddleware(typeof(ExceptionHandlerMiddleWare));
 
             app.UseStaticFiles();
 

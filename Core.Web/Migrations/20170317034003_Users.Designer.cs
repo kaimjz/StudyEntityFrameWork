@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Core.Web.App_Data;
+using Repositories.Base;
 
 namespace Core.Web.Migrations
 {
-    [DbContext(typeof(DataContext))]
+    [DbContext(typeof(SqlServerContext))]
     [Migration("20170317034003_Users")]
     partial class Users
     {

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Events>
+  <Event>
+    <PublishEvent>DDD.Test.Code.Events.OrderAddedEvent</PublishEvent>
+    <SubscribedEvents>
+      <SubscribedEvent>DDD.Test.Code.EventHandlers.OrderHandler_SendEMail</SubscribedEvent>
+    </SubscribedEvents>
+  </Event>
+  <Event>
+    <PublishEvent>DDD.Test.Code.Events.OrderDeletedEvent</PublishEvent>
+    <SubscribedEvents>
+      <SubscribedEvent>DDD.Test.Code.EventHandlers.OrderHandler_SendEMail</SubscribedEvent>
+    </SubscribedEvents>
+  </Event>
+</Events>

@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model Users
 @{
     ViewData["Title"] = "用户首页";
 }
@@ -25,3 +25,11 @@
         </div>
     </div>
 </form>
+@section Scripts{
+    <script>
+        if (@ViewBag.Result) {
+            alert("添加成功");
+            window.location.href = "/User/Index/1";
+        }
+    </script>
+}

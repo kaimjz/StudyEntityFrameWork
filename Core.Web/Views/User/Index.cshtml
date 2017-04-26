@@ -2,7 +2,7 @@
     ViewData["Title"] = "用户首页";
 }
 @model List<Users>
-<h3><a href="/user/index">用户列表</a><a href="/user/indexAjax"  class="col-lg-offset-1">Ajax用户列表</a></h3>
+<h3>用户列表</h3>
 @if (Model != null && Model.Count > 0)
 {
     <table class="table table-bordered table-hover table-condensed">
@@ -10,6 +10,7 @@
             <th>Id</th>
             <th>用户名</th>
             <th>年龄</th>
+            <th>操作</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -23,6 +24,9 @@
                 <td>
                     @Html.DisplayFor(mo => item.Age)
                 </td>
+                <td>
+                    <a href="/User/Delete/@item.Id">删除</a>
+                </td>
             </tr>
         }
     </table>
@@ -31,7 +35,7 @@
         {
             if (@i == ViewBag.PageIndex)
             {
-                <a class="btn btn-danger" href="/user/index/@i" >@i</a>
+                <a class="btn btn-danger" href="/user/index/@i">@i</a>
             }
             else
             {
@@ -48,3 +52,15 @@ else
     </div>
 }
 <a asp-controller="User" asp-action="Add" class="btn  btn-default">添加用户</a>
+@section Scripts{
+    <script>
+            if (@ViewBag.Result==1)
+        {
+            alert("删除成功");
+            window.location.reload(true);
+        }
+        else if (@ViewBag.Result==-1) {
+            alert("删除失败");
+        }
+    </script>
+}
