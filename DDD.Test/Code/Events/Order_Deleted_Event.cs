@@ -7,7 +7,7 @@ using Code.Infrastructure;
 
 namespace DDD.Test.Code.Events
 {
-    public class OrderAdded_Event : IEvent
+    public class Order_Deleted_Event : IEvent
     {
         public Guid Id { get; set; }
 

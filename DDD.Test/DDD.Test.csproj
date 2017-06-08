@@ -44,8 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\EventHandlers\SendEmail_EventHandler.cs" />
-    <Compile Include="Code\Events\OrderAdded_Event.cs" />
-    <Compile Include="Code\Events\OrderDeleted_Event.cs" />
+    <Compile Include="Code\EventHandlers\Test_EventHandler.cs" />
+    <Compile Include="Code\Events\Order_Added_Event.cs" />
+    <Compile Include="Code\Events\Order_Deleted_Event.cs" />
     <Compile Include="Code\Infrastructure\ActionDelegatedEventHandler.cs" />
     <Compile Include="Code\Infrastructure\EventBus.cs" />
     <Compile Include="Code\Infrastructure\HandlesAsyncAttribute.cs" />

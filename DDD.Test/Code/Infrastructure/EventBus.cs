@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -104,15 +105,16 @@ namespace Code.Infrastructure
                 {
                     eventBus = new EventBus();
                     var Excepts = new string[] { "IEventHandler`1", "ActionDelegatedEventHandler`1" };
-                    var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()
+                    //todo 验证两张方式的用时情况
+                    var typess = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()
                     .Where(t => t.GetInterfaces().Where(p => p.Name == typeof(IEventHandler<>).Name).Count() > 0))
                     .Where(i => !Excepts.Contains(i.Name))
                     .ToArray();
 
-                    //var typess = Assembly.GetExecutingAssembly().GetTypes()
-                    //.Where(t => t.GetInterfaces().Where(p => p.Name == typeof(IEventHandler<>).Name).Count() > 0)
-                    //.Where(i => !Excepts.Contains(i.Name))
-                    //.ToArray();
+                    var types = Assembly.GetExecutingAssembly().GetTypes()
+                    .Where(t => t.GetInterfaces().Where(p => p.Name == typeof(IEventHandler<>).Name).Count() > 0)
+                    .Where(i => !Excepts.Contains(i.Name))
+                    .ToArray();
                     foreach (var item in types)
                     {
                         if (!item.ContainsGenericParameters)

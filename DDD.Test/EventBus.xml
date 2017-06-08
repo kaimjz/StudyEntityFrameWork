@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Events>
   <Event>
-    <PublishEvent>DDD.Test.Code.Events.OrderAdded_Event</PublishEvent>
+    <PublishEvent>DDD.Test.Code.Events.Order_Added_Event</PublishEvent>
     <SubscribedEvents>
       <SubscribedEvent>DDD.Test.Code.EventHandlers.SendEmail_EventHandler</SubscribedEvent>
     </SubscribedEvents>
   </Event>
   <Event>
-    <PublishEvent>DDD.Test.Code.Events.OrderDeleted_Event</PublishEvent>
+    <PublishEvent>DDD.Test.Code.Events.Order_Deleted_Event</PublishEvent>
     <SubscribedEvents>
       <SubscribedEvent>DDD.Test.Code.EventHandlers.SendEmail_EventHandler</SubscribedEvent>
     </SubscribedEvents>
